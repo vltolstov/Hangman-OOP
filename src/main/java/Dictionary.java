@@ -7,24 +7,29 @@ import java.util.Random;
 
 public class Dictionary {
 
+    private final Random random = new Random();
     private List<String> dictionary;
-    private Random random = new Random();
+    private int randomIndex;
 
     public Dictionary() {
-        dictionary = new ArrayList<String>();
+        this.dictionary = new ArrayList<String>();
         readAllWords();
+        setWordIndex();
     }
 
-    public void readAllWords() {
+    public String getWord() {
+        return dictionary.get(randomIndex);
+    }
+
+    private void readAllWords() {
         try {
-            dictionary = Files.readAllLines(Paths.get("src/main/resources/words.txt"));
+            this.dictionary = Files.readAllLines(Paths.get("src/main/resources/words.txt"));
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
-    public String getWord() {
-        int randomIndex = random.nextInt(dictionary.size());
-        return dictionary.get(randomIndex);
+    private void setWordIndex() {
+        randomIndex = random.nextInt(dictionary.size());
     }
 }
