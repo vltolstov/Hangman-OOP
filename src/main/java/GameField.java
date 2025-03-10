@@ -26,6 +26,10 @@ public class GameField {
         this.field = fieldSB.toString();
     }
 
+    public void renderGameField() {
+        System.out.println(field);
+    }
+
     private void resetGameField() {
         for (int i = 0; i < this.secretWord.length(); i++) {
             this.field += "-";
