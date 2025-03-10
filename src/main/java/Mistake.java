@@ -15,7 +15,7 @@ public class Mistake {
         this.count -= 1;
     }
 
-    public int getMistakes() {
+    public int getMistakesCount() {
         return this.count;
     }
 
