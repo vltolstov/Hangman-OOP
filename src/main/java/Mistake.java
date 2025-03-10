@@ -3,20 +3,20 @@ import java.util.List;
 
 public class Mistake {
 
-    private int mistakes;
+    private int count;
     private List<String> duplicateWrongLetters;
 
-    private Mistake() {
-        this.mistakes = 0;
+    public Mistake(int count) {
+        this.count = count;
         this.duplicateWrongLetters = new ArrayList<>();
     }
 
     public void addMistake() {
-        this.mistakes += 1;
+        this.count -= 1;
     }
 
     public int getMistakes() {
-        return this.mistakes;
+        return this.count;
     }
 
     public void setDuplicateWrongChars(Character letter) {
