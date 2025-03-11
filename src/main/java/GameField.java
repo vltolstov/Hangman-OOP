@@ -10,15 +10,15 @@ public class GameField {
 
     public GameField(String secretWord) {
         this.secretWord = secretWord;
-        resetGameField();
+        resetField();
         setRandomOpenLetters();
     }
 
-    public String getGameField() {
+    public String getField() {
         return this.field;
     }
 
-    public void setGameField(List<Integer> indexes) {
+    public void setField(List<Integer> indexes) {
         StringBuilder fieldSB = new StringBuilder(this.field);
         for (Integer index : indexes) {
             fieldSB.setCharAt(index, this.secretWord.charAt(index));
@@ -26,11 +26,11 @@ public class GameField {
         this.field = fieldSB.toString();
     }
 
-    public void renderGameField() {
+    public void renderField() {
         System.out.println(field);
     }
 
-    private void resetGameField() {
+    private void resetField() {
         for (int i = 0; i < this.secretWord.length(); i++) {
             this.field += "-";
         }
@@ -52,7 +52,7 @@ public class GameField {
                 indexes.add(i);
             }
         }
-        setGameField(indexes);
+        setField(indexes);
     }
 
 }
