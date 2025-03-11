@@ -1,4 +1,4 @@
-public class Notify {
+public class Notifier {
 
     public void getMessage(String message) {
         System.out.println(message);
