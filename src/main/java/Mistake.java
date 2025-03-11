@@ -19,7 +19,11 @@ public class Mistake {
         return this.count;
     }
 
-    public void setDuplicateWrongChars(Character letter) {
+    public void addDuplicateWrongChars(Character letter) {
         duplicateWrongLetters.add(Character.toString(letter));
+    }
+
+    public List<String> getDuplicateWrongLetters() {
+        return duplicateWrongLetters;
     }
 }
