@@ -1,12 +1,7 @@
 public class Status {
 
     private boolean gameStatus;
-    private boolean endGameStatus;
-
-    Status(boolean gameStatus, boolean endGameStatus) {
-        this.gameStatus = gameStatus;
-        this.endGameStatus = endGameStatus;
-    }
+    private boolean gameLoopStatus;
 
     public boolean getGameStatus() {
         return gameStatus;
@@ -16,11 +11,17 @@ public class Status {
         this.gameStatus = gameStatus;
     }
 
-    public boolean getEndGameStatus() {
-        return endGameStatus;
+    public boolean getGameLoopStatus() {
+        return gameLoopStatus;
     }
 
-    public void setEndGameStatus(boolean endGameStatus) {
-        this.endGameStatus = endGameStatus;
+    public void setGameLoopStatus(boolean endGameStatus) {
+        this.gameLoopStatus = endGameStatus;
+    }
+
+    public void checkGameStatus(GameField gameField, Mistake mistake) {
+        if (!gameField.getField().contains("-") || mistake.getMistakesCount() == 0) {
+            this.gameLoopStatus = true;
+        }
     }
 }
