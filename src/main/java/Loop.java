@@ -4,9 +4,7 @@ import java.util.Scanner;
 
 public class Loop {
 
-    private static Notifier notifier = new Notifier();
-
-    public static void play(String secretWord, GameField gameField, Mistake mistake, Scanner scanner) {
+    public static void play(String secretWord, GameField gameField, Mistake mistake, Scanner scanner, Notifier notifier) {
 
         char userLetter = scanner.next().charAt(0);
         String field = gameField.getField();
