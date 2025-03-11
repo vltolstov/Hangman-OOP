@@ -21,7 +21,7 @@ public class Status {
 
     public void checkGameStatus(GameField gameField, Mistake mistake) {
         if (!gameField.getField().contains("-") || mistake.getMistakesCount() == 0) {
-            this.gameLoopStatus = true;
+            this.gameLoopStatus = false;
         }
     }
 }
