@@ -1,3 +1,11 @@
+import src.Dictionary;
+import src.GameField;
+import src.Loop;
+import src.Mistake;
+import src.Notifier;
+import src.Result;
+import src.Status;
+
 import java.util.Scanner;
 
 public class Hangman {
@@ -15,8 +23,7 @@ public class Hangman {
             if (status.getGameStatus()) {
                 Mistake mistake = new Mistake(ERROR_COUNT);
                 Dictionary dictionary = new Dictionary();
-                //String secretWord = dictionary.getWord();
-                String secretWord = "трость";
+                String secretWord = dictionary.getWord();
                 GameField gameField = new GameField(secretWord);
                 gameField.renderField();
 

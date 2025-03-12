@@ -1,3 +1,5 @@
+package src;
+
 public class Status {
 
     private boolean gameStatus;

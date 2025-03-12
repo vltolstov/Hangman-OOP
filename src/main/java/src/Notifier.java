@@ -1,3 +1,5 @@
+package src;
+
 public class Notifier {
 
     public void getMessage(String message) {

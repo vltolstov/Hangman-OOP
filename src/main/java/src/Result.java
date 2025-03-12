@@ -1,3 +1,5 @@
+package src;
+
 public class Result {
 
     public boolean check(GameField gameField, Mistake mistake) {
