@@ -3,39 +3,48 @@ import java.util.Scanner;
 public class Hangman {
 
     private static final String START_COMMAND = "старт";
+    private static final int ERROR_COUNT = 6;
     static Scanner scanner = new Scanner(System.in);
-    private static boolean GAME_STATUS;
-    private static boolean END_GAME_STATUS;
+    static Notifier notifier = new Notifier();
+    static Status status = new Status();
+    static Result result = new Result();
 
     public static void main(String[] args) {
         do {
             initialization();
-            if (GAME_STATUS) {
-
-                Mistake mistake = new Mistake(6);
+            if (status.getGameStatus()) {
+                Mistake mistake = new Mistake(ERROR_COUNT);
                 Dictionary dictionary = new Dictionary();
-                String secretWord = dictionary.getWord();
+                //String secretWord = dictionary.getWord();
+                String secretWord = "трость";
                 GameField gameField = new GameField(secretWord);
-                System.out.println(gameField.getGameField());
+                gameField.renderField();
 
-//                while (!END_GAME_STATUS) {
-//                playerTurn();
-//                System.out.println(GAME_FIELD);
-//                checkGameStatus();
-//                }
-//                viewResult();
+                while (status.getGameLoopStatus()) {
+                    Loop.play(secretWord, gameField, mistake, scanner, notifier);
+                    gameField.renderField();
+                    status.checkGameStatus(gameField, mistake);
+                }
+
+                if (result.check(gameField, mistake)) {
+                    notifier.getCongratulations();
+                } else {
+                    notifier.getCondolences(secretWord);
+                }
             }
-        } while (GAME_STATUS);
+            int a = 1;
+            boolean s = status.getGameStatus();
+        } while (status.getGameStatus());
     }
 
     public static void initialization() {
-        System.out.println("Для старта новой игры введите 'Старт'. Для отмены игры нажмите Enter: ");
+        System.out.println("Для старта новой игры введите 'Старт'. Для отмены игры введите любой символ");
         String commandFromUserInput = scanner.nextLine().toLowerCase();
         if (commandFromUserInput.equals(START_COMMAND)) {
-            GAME_STATUS = true;
-            END_GAME_STATUS = false;
-        } else {
-            GAME_STATUS = false;
+            status.setGameStatus(true);
+            status.setGameLoopStatus(true);
+        } else if (!commandFromUserInput.isEmpty()) {
+            status.setGameStatus(false);
         }
     }
 }
