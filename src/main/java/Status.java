@@ -4,7 +4,7 @@ public class Status {
     private boolean gameLoopStatus;
 
     public boolean getGameStatus() {
-        return gameStatus;
+        return this.gameStatus;
     }
 
     public void setGameStatus(boolean gameStatus) {
