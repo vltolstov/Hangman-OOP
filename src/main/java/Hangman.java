@@ -11,7 +11,6 @@ import java.util.Scanner;
 
 public class Hangman {
 
-    private static final String START_COMMAND = "старт";
     private static final int ERROR_COUNT = 6;
     static Scanner scanner = new Scanner(System.in);
     static Notifier notifier = new Notifier();
