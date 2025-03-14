@@ -11,7 +11,9 @@ public class Loop {
         char userLetter = scanner.next().charAt(0);
         String field = gameField.getField();
 
-        if (field.contains(Character.toString(userLetter))) {
+        if (!Character.UnicodeBlock.of(userLetter).equals(Character.UnicodeBlock.CYRILLIC)) {
+            notifier.getMessage("Введенный символ некорректен. Подходят только буквы кириллицы");
+        } else if (field.contains(Character.toString(userLetter))) {
             notifier.getMessage("Такая буква уже есть в слове.");
         } else if (!field.contains(Character.toString(userLetter)) && secretWord.contains(Character.toString(userLetter))) {
             List<Integer> indexes = new ArrayList<>();
